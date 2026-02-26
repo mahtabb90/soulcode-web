@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../api/client";
-import logo from "../assets/soulcode-logo.png";
+import logo from "../assets/Soulcode-logo.png";
 
 
 
