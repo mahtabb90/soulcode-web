@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.auth.router import router as auth_router
+from app.db.database import Base, engine
+from app.entries.router import router as entries_router
 
 app = FastAPI(title="SoulCode API", version="0.1.0")
+Base.metadata.create_all(bind=engine)
 
 app.add_middleware(
     CORSMiddleware,
@@ -10,7 +14,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+app.include_router(auth_router)
+app.include_router(entries_router)
 
 @app.get("/health")
 def health_check() -> dict:
