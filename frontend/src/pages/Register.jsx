@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "../assets/soulcode-logo.png";
+import logo from "../assets/Soulcode-logo.png";
 import { register } from "../api/client";
 
 export default function Register() {

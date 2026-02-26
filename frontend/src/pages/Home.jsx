@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/soulcode-logo.png";
+import logo from "../assets/Soulcode-logo.png";
 
 function Particles() {
   // 14 particles, fixed positions + different animation speeds
