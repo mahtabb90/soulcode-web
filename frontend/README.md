@@ -1,16 +1,90 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# 🎨 `frontend/README.md`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```markdown
+# SoulCode Frontend
 
-## React Compiler
+React + Vite frontend for the SoulCode platform.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This client application provides a chakra-inspired interface for tracking wellness data and visualizing energy patterns.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧠 Core Features
+
+- Register & Login (JWT-based)
+- Protected dashboard routes
+- Chakra-themed UI
+- Weekly insight summary
+- Custom SVG 7-day trend visualization
+- Animated landing page
+
+---
+
+## 🏗 Architecture
+
+- React (Vite)
+- React Router
+- Fetch-based API client
+- Environment-based API configuration
+- Production rewrite rule for routing
+
+---
+
+## 🌍 Environment Configuration
+
+API base URL is environment-driven:
+
+
+VITE_API_URL=https://your-backend.onrender.com
+
+
+Local fallback:
+
+http://localhost:8000
+
+
+---
+
+## ▶ Run Locally
+
+```bash
+cd frontend
+npm install
+npm run dev
+
+App runs at:
+
+http://localhost:5173
+
+
+🚀 Production Deployment
+
+Hosted as Render Static Site
+
+Built with npm run build
+
+Publish directory: dist
+
+Rewrite rule:
+
+/* → /index.html (200)
+
+This ensures React Router works correctly in production.
+
+🎨 Design Philosophy
+
+The UI is intentionally designed to blend:
+
+Minimalist structure
+
+Energy-inspired color system
+
+Data-driven feedback
+
+Emotional + analytical experience
+
+SoulCode demonstrates how frontend architecture and visual identity can support behavioral awareness systems.
