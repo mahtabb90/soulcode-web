@@ -2,8 +2,7 @@ from datetime import datetime, timezone
 
 from sqlalchemy import Integer, String, DateTime, Text
 from sqlalchemy.orm import Mapped, mapped_column
-
-from .database import Base
+from app.db.database import Base
 
 
 class Entry(Base):
@@ -17,6 +16,16 @@ class Entry(Base):
 
     chakra: Mapped[str] = mapped_column(String(50))  # root/sacral/...
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime, default=lambda: datetime.now(timezone.utc)
+    )
+    
+class User(Base):
+    __tablename__ = "users"
+
+    email: Mapped[str] = mapped_column(String(255), primary_key=True, index=True)
+    hashed_password: Mapped[str] = mapped_column(String(255), nullable=False)
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime, default=lambda: datetime.now(timezone.utc)

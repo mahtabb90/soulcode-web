@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.auth.router import router as auth_router
 from app.db.database import Base, engine
+from app.db.models import User, Entry
 from app.entries.router import router as entries_router
 
 app = FastAPI(title="SoulCode API", version="0.1.0")
