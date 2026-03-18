@@ -337,6 +337,21 @@ export default function Dashboard() {
     </div>
   </div>
 )}
+
+<div className="mt-6 p-6 rounded-2xl border border-purple-400/20 bg-white/5 backdrop-blur-md">
+  <h2 className="text-2xl font-semibold mb-2">Explore Chakra System 🔮</h2>
+
+  <p className="text-gray-300 mb-4">
+    Learn more about your energy centers and how they affect your balance.
+  </p>
+
+  <button
+    onClick={() => navigate("/chakra")}
+    className="px-6 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white hover:opacity-90 transition"
+  >
+    Open Chakra Guide
+  </button>
+</div>
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Form */}
           <div className="bg-white/5 border border-purple-400/30 rounded-3xl p-8 backdrop-blur-xl shadow-[0_0_40px_rgba(168,85,247,0.25)]">

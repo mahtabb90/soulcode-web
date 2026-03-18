@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home"
 import Register from "./pages/Register";
+import Chakra from "./pages/Chakra";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/chakra" element={<Chakra />} />
 
         <Route
           path="/dashboard"
@@ -27,3 +29,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
