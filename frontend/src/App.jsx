@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home"
 import Register from "./pages/Register";
 import Chakra from "./pages/Chakra";
+import ChakraDetail from "./pages/ChakraDetail";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/chakra" element={<Chakra />} />
+        <Route path="/chakra/:name" element={<ChakraDetail />} />
 
         <Route
           path="/dashboard"
