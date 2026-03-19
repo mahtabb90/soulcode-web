@@ -98,3 +98,37 @@ export async function getWeeklySummary() {
 
   return res.json();
 }
+
+export async function getEntry(id) {
+  const res = await fetch(`${API_BASE_URL}/entries/${id}`, {
+    headers: { Authorization: `Bearer ${getToken()}` },
+  });
+  if (!res.ok) throw new Error("Failed to fetch entry");
+  return res.json();
+}
+
+export async function updateEntry(id, entry) {
+  const res = await fetch(`${API_BASE_URL}/entries/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken()}`,
+    },
+    body: JSON.stringify(entry),
+  });
+
+  if (!res.ok) throw new Error("Failed to update entry");
+  return res.json();
+}
+
+export async function deleteEntry(id) {
+  const res = await fetch(`${API_BASE_URL}/entries/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
+
+  if (!res.ok) throw new Error("Failed to delete entry");
+}
+

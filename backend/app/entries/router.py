@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.entries.summary import weekly_summary
 from app.db.database import get_db
@@ -49,6 +49,77 @@ def list_entries(
         .order_by(Entry.created_at.desc())
         .all()
     )
+    
+@router.get("/{entry_id}", response_model=EntryOut)
+def get_entry(
+    entry_id: int,
+    db: Session = Depends(get_db),
+    current_user_email=Depends(get_current_user_email),
+):
+    entry = (
+        db.query(Entry)
+        .filter(Entry.id == entry_id, Entry.user_email == current_user_email)
+        .first()
+    )
+
+    if not entry:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Entry not found",
+        )
+
+    return entry
+
+
+@router.put("/{entry_id}", response_model=EntryOut)
+def update_entry(
+    entry_id: int,
+    payload: EntryCreate,
+    db: Session = Depends(get_db),
+    current_user_email=Depends(get_current_user_email),
+):
+    entry = (
+        db.query(Entry)
+        .filter(Entry.id == entry_id, Entry.user_email == current_user_email)
+        .first()
+    )
+
+    if not entry:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Entry not found",
+        )
+
+    entry.entry_type = payload.entry_type
+    entry.minutes = payload.minutes
+    entry.chakra = payload.chakra
+    entry.note = payload.note
+
+    db.commit()
+    db.refresh(entry)
+    return entry
+
+
+@router.delete("/{entry_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_entry(
+    entry_id: int,
+    db: Session = Depends(get_db),
+    current_user_email=Depends(get_current_user_email),
+):
+    entry = (
+        db.query(Entry)
+        .filter(Entry.id == entry_id, Entry.user_email == current_user_email)
+        .first()
+    )
+
+    if not entry:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Entry not found",
+        )
+
+    db.delete(entry)
+    db.commit()    
     
 @router.get("/summary/weekly")
 def get_weekly_summary(

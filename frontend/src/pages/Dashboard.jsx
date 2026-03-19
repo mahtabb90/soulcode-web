@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getMe, listEntries, createEntry } from "../api/client";
-import { getWeeklySummary } from "../api/client";
+import {
+  listEntries,
+  createEntry,
+  getWeeklySummary,
+  getMe,
+  deleteEntry,
+} from "../api/client";
+
 
 const chakraStyles = {
   root: "border-chakra-root/40 shadow-[0_0_25px_rgba(239,68,68,0.25)]",
@@ -246,7 +252,19 @@ export default function Dashboard() {
     loadAll();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  
+  async function handleDelete(entryId) {
+   const confirmed = window.confirm("Are you sure you want to delete this entry?");
 
+  if (!confirmed) return;
+
+  try {
+    await deleteEntry(entryId);
+    setEntries((prev) => prev.filter((entry) => entry.id !== entryId));
+  } catch (error) {
+    alert(error.message || "Failed to delete entry");
+  }
+}
   async function handleCreate(e) {
     e.preventDefault();
     setError("");
@@ -457,7 +475,15 @@ export default function Dashboard() {
                     <div className="mt-3 text-xs text-gray-500">
                       {new Date(e.created_at).toLocaleString()}
                     </div>
-                  </div>
+                      
+                      <button
+                        onClick={() => handleDelete(e.id)}
+                        className="mt-4 px-4 py-2 rounded-full border border-red-400/30 bg-red-500/10 text-red-200 hover:bg-red-500/20 transition text-sm"
+                      >
+                       Delete
+                      </button>
+                    </div>
+                  
                 ))}
               </div>
             )}
