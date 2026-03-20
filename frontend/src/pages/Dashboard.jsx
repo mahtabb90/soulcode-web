@@ -6,6 +6,7 @@ import {
   getWeeklySummary,
   getMe,
   deleteEntry,
+  updateEntry,
 } from "../api/client";
 
 
@@ -225,6 +226,8 @@ export default function Dashboard() {
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
 
+  const [editingEntry, setEditingEntry] = useState(null);
+
   function logout() {
     localStorage.removeItem("soulcode_token");
     navigate("/login");
@@ -265,25 +268,57 @@ export default function Dashboard() {
     alert(error.message || "Failed to delete entry");
   }
 }
+
+function handleEdit(entry) {
+  setEntryType(entry.entry_type);
+  setMinutes(entry.minutes);
+  setChakra(entry.chakra);
+  setNote(entry.note || "");
+  setEditingEntry(entry);
+}
   async function handleCreate(e) {
-    e.preventDefault();
-    setError("");
-    setSaving(true);
-    try {
-      await createEntry({
-        entry_type: entryType,
-        minutes: Number(minutes),
-        chakra,
-        note: note.trim() ? note.trim() : null,
-      });
-      setNote("");
-      await loadAll();
-    } catch (err) {
-      setError(err.message || "Could not create entry");
-    } finally {
-      setSaving(false);
+  e.preventDefault();
+  setError("");
+  setSaving(true);
+
+  try {
+    const payload = {
+      entry_type: entryType,
+      minutes: Number(minutes),
+      chakra,
+      note: note.trim() ? note.trim() : null,
+    };
+
+    if (editingEntry) {
+      // UPDATE
+      const updated = await updateEntry(editingEntry.id, payload);
+
+      setEntries((prev) =>
+        prev.map((entry) =>
+          entry.id === updated.id ? updated : entry
+        )
+      );
+
+      setEditingEntry(null);
+
+    } else {
+      // CREATE
+      const created = await createEntry(payload);
+      setEntries((prev) => [created, ...prev]);
     }
+
+    // reset form
+    setEntryType("meditation");
+    setMinutes("");
+    setChakra("");
+    setNote("");
+
+  } catch (error) {
+    alert(error.message || "Failed to save entry");
+  } finally {
+    setSaving(false);
   }
+}
 
   return (
     <div className="relative min-h-screen bg-black text-white px-6 overflow-hidden animate-fadeIn">
@@ -437,7 +472,7 @@ export default function Dashboard() {
                 disabled={saving}
                 className="w-full mt-2 px-8 py-3 rounded-full bg-chakra-gradient text-black font-semibold tracking-wide shadow-[0_0_25px_rgba(168,85,247,0.6)] transition duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(168,85,247,0.9)] disabled:opacity-60 disabled:hover:scale-100"
               >
-                {saving ? "Saving..." : "Save entry"}
+                {editingEntry ? "Update entry" : "Save entry"}
               </button>
             </form>
           </div>
@@ -476,12 +511,21 @@ export default function Dashboard() {
                       {new Date(e.created_at).toLocaleString()}
                     </div>
                       
-                      <button
-                        onClick={() => handleDelete(e.id)}
-                        className="mt-4 px-4 py-2 rounded-full border border-red-400/30 bg-red-500/10 text-red-200 hover:bg-red-500/20 transition text-sm"
-                      >
-                       Delete
-                      </button>
+                      <div className="mt-4 flex gap-2">
+  <button
+    onClick={() => handleEdit(e)}
+    className="px-4 py-2 rounded-full border border-blue-400/30 bg-blue-500/10 text-blue-200 hover:bg-blue-500/20 transition text-sm"
+  >
+    Edit
+  </button>
+
+  <button
+    onClick={() => handleDelete(e.id)}
+    className="px-4 py-2 rounded-full border border-red-400/30 bg-red-500/10 text-red-200 hover:bg-red-500/20 transition text-sm"
+  >
+    Delete
+  </button>
+</div>
                     </div>
                   
                 ))}

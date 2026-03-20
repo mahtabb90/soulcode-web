@@ -142,7 +142,8 @@ export default function ChakraDetail() {
         <button
           onClick={() => navigate("/chakra")}
           style={{
-            padding: "0.7rem 1.2rem",
+            padding: "0.5rem 1rem",
+            fontSize: "0.9rem",
             borderRadius: "999px",
             border: "1px solid rgba(180, 120, 255, 0.35)",
             background: "rgba(255,255,255,0.04)",
@@ -172,7 +173,8 @@ export default function ChakraDetail() {
       <button
         onClick={() => navigate("/chakra")}
         style={{
-          padding: "0.7rem 1.2rem",
+          padding: "0.5rem 1rem",
+          fontSize: "0.9rem",
           borderRadius: "999px",
           border: "1px solid rgba(180, 120, 255, 0.35)",
           background: "rgba(255,255,255,0.04)",
@@ -191,6 +193,7 @@ export default function ChakraDetail() {
           borderRadius: "24px",
           padding: "2rem",
           maxWidth: "1100px",
+          margin: "0 auto",
           boxShadow: `0 0 35px ${chakra.color}18`,
         }}
       >
