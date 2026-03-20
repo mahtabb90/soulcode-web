@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getHealth } from "../api/client";
 import Header from "../components/Header";
-import logo from "../assets/SoulCode-logo.png";
+import logo from "../assets/Soulcode-logo.png";
 
 export default function Landing() {
   const navigate = useNavigate();
