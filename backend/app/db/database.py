@@ -7,7 +7,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 # Default local DB (SQLite)
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./soulcode.db")
 
-# Render sometimes gives postgres:// but SQLAlchemy expects postgresql://
+# Some providers use postgres:// but SQLAlchemy expects postgresql://
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
@@ -18,6 +18,7 @@ if DATABASE_URL.startswith("sqlite"):
 engine = create_engine(
     DATABASE_URL,
     pool_pre_ping=True,
+    pool_recycle=300,
     connect_args=connect_args,
 )
 
@@ -36,4 +37,3 @@ def get_db() -> Generator[Session, None, None]:
         db.close()
         
         
-print("DATABASE_URL:", DATABASE_URL)       
