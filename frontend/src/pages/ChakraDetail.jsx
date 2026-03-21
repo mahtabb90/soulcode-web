@@ -18,6 +18,8 @@ const chakraData = {
       "Breathing deeply into the lower body",
     ],
     affirmation: "I am safe, grounded, and supported.",
+    locationText: "Located at the base of the spine and pelvic floor.",
+    imagePosition: { top: "85%", left: "50%" },
   },
   sacral: {
     name: "Sacral",
@@ -35,6 +37,8 @@ const chakraData = {
       "Breathwork for emotional release",
     ],
     affirmation: "I allow myself to feel, create, and enjoy life.",
+    locationText: "Located in the lower abdomen, just below the navel.",
+    imagePosition: { top: "73.5%", left: "50%" },
   },
   solar: {
     name: "Solar",
@@ -52,6 +56,8 @@ const chakraData = {
       "Motivational affirmations",
     ],
     affirmation: "I trust myself and step into my power.",
+    locationText: "Located in the upper abdomen, above the navel.",
+     imagePosition: { top: "61.5%", left: "50%" },
   },
   heart: {
     name: "Heart",
@@ -69,6 +75,8 @@ const chakraData = {
       "Breathing into the chest area",
     ],
     affirmation: "I give and receive love with openness and trust.",
+    locationText: "Located in the center of the chest.",
+    imagePosition:  { top: "51%", left: "50%" },
   },
   throat: {
     name: "Throat",
@@ -86,6 +94,8 @@ const chakraData = {
       "Practicing honest communication",
     ],
     affirmation: "I express myself clearly and truthfully.",
+    locationText: "Located at the throat.",
+    imagePosition: { top: "39%", left: "50%" },
   },
   "third-eye": {
     name: "Third Eye",
@@ -103,6 +113,8 @@ const chakraData = {
       "Reducing overstimulation",
     ],
     affirmation: "I trust my intuition and inner wisdom.",
+    locationText: "Located between the eyebrows in the center of the forehead.",
+      imagePosition:  { top: "24%", left: "50%" },
   },
   crown: {
     name: "Crown",
@@ -120,6 +132,8 @@ const chakraData = {
       "Contemplative journaling",
     ],
     affirmation: "I am connected to wisdom, presence, and peace.",
+    locationText: "Located at the top of the head.",
+    imagePosition: { top: "8.5%", left: "50%" },
   },
 };
 
@@ -284,19 +298,105 @@ export default function ChakraDetail() {
         <div
           style={{
             marginTop: "1.2rem",
-            background: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: "18px",
-            padding: "1.2rem",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "1.2rem",
+            alignItems: "stretch",
           }}
         >
-          <h2 style={{ marginBottom: "1rem" }}>Helpful practices</h2>
+          <div
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "18px",
+              padding: "1.2rem",
+            }}
+          >
+            <h2 style={{ marginBottom: "1rem" }}>Helpful practices</h2>
 
-          <ul style={{ paddingLeft: "1.2rem", margin: 0, color: "#d8d8d8", lineHeight: "2" }}>
-            {chakra.practices.map((practice) => (
-              <li key={practice}>{practice}</li>
-            ))}
-          </ul>
+            <ul
+              style={{
+                paddingLeft: "1.2rem",
+                margin: 0,
+                color: "#d8d8d8",
+                lineHeight: "2",
+              }}
+            >
+              {chakra.practices.map((practice) => (
+                <li key={practice}>{practice}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "18px",
+              padding: "1.2rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <h2 style={{ marginBottom: "1rem", alignSelf: "flex-start" }}>
+              Chakra location
+            </h2>
+
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "360px",
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: "1rem",
+              }}
+            >
+              <img
+                src="/body-silhouette.png"
+                alt={`${chakra.name} chakra location`}
+                style={{
+                  width: "100%",
+                  maxWidth: "320px",
+                  height: "auto",
+                  objectFit: "contain",
+                  borderRadius: "18px",
+                  opacity: 0.95,
+                }}
+              />
+
+              <div
+                style={{
+    position: "absolute",
+    top: chakra.imagePosition.top,
+    left: chakra.imagePosition.left,
+    transform: "translate(-50%, -50%)",
+    width: "28px",
+    height: "28px",
+    borderRadius: "999px",
+    border: `3px solid ${chakra.color}`,
+    background: "transparent",
+    boxShadow: `0 0 12px ${chakra.color}, 0 0 25px ${chakra.color}`,
+    animation: "chakraPulse 2s ease-in-out infinite",
+    pointerEvents: "none",
+  }}
+              />
+            </div>
+
+            <p
+              style={{
+                margin: 0,
+                color: "#d6d6d6",
+                lineHeight: "1.8",
+                textAlign: "center",
+                maxWidth: "320px",
+              }}
+            >
+              {chakra.locationText}
+            </p>
+          </div>
         </div>
       </div>
     </div>
