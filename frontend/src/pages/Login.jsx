@@ -40,10 +40,10 @@ export default function Login() {
       <div className="w-full max-w-md bg-white/5 border border-purple-400/30 rounded-3xl p-10 shadow-[0_0_40px_rgba(168,85,247,0.3)] backdrop-blur-xl">
       <div className="flex flex-col items-center mb-6">
         <img
-          src={logo}
-          alt="SoulCode"
-          className="w-20 opacity-90 drop-shadow-[0_0_18px_rgba(168,85,247,0.55)]"
-        />
+  src={logo}
+  alt="SoulCode"
+  className="w-28 opacity-90 drop-shadow-[0_0_18px_rgba(168,85,247,0.55)] transition-transform duration-300 hover:scale-105"
+/>
       </div>
         <h1 className="text-3xl font-semibold text-center mb-2">Welcome back</h1>
         <p className="text-gray-400 text-center mb-8">Enter your portal.</p>

@@ -53,22 +53,7 @@ export default function Chakra() {
         </p>
       </div>
 
-      {/* Dominant chakra */}
-      <div
-        style={{
-          marginTop: "1rem",
-          marginBottom: "2rem",
-          padding: "1rem 1.2rem",
-          borderRadius: "16px",
-          background: "rgba(255,255,255,0.03)",
-          border: "1px solid rgba(51, 204, 153, 0.35)",
-          boxShadow: "0 0 20px rgba(51, 204, 153, 0.08)",
-        }}
-      >
-        <p style={{ color: "#33cc99", fontWeight: "600", margin: 0 }}>
-          Your dominant chakra this week: Heart 💚
-        </p>
-      </div>
+      
 
       {/* Chakra cards */}
       <div

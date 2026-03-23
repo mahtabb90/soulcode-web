@@ -76,12 +76,17 @@ export default function Landing() {
 <div className="absolute top-[-10px] w-[320px] h-[320px] md:w-[420px] md:h-[420px] rounded-full bg-violet-400/8 blur-[130px]"></div>
 
           <img
-            src={logo}
-            alt="SoulCode logo"
-            className="relative z-10 w-72 md:w-[420px] mb-4 animate-glow-pulse transition-transform duration-500 hover:scale-105"
-          />
+  src={logo}
+  alt="SoulCode logo"
+  className="relative z-10 w-60 md:w-[360px] mb-4 
+  animate-glow-pulse 
+  transition-transform duration-500 hover:scale-105"
+/>
 
-   <h1 className="relative z-10 text-6xl md:text-[5.5rem] font-extrabold bg-[linear-gradient(to_right,#31c85b_0%,#31c85b_22%,#2fc7b7_42%,#4d8df7_72%,#8a63f6_100%)] bg-clip-text text-transparent tracking-wide transition-all duration-500 hover:scale-105">
+  <h1 className="relative z-10 text-5xl md:text-[4.5rem] font-extrabold 
+bg-[linear-gradient(to_right,#31c85b_0%,#31c85b_22%,#2fc7b7_42%,#4d8df7_72%,#8a63f6_100%)] 
+bg-clip-text text-transparent tracking-wide 
+transition-all duration-500 hover:scale-105">
   SoulCode
 </h1>
 
@@ -93,21 +98,29 @@ export default function Landing() {
 
           <div className="w-72 h-1 bg-chakra-gradient rounded-full mb-12 mt-6 animate-pulse"></div>
 
-          <div className="relative z-10 mt-10 flex items-center gap-5">
-            <button
-              onClick={() => navigate("/login")}
-              className="px-10 py-4 rounded-full bg-chakra-gradient text-black font-semibold text-2xl shadow-[0_0_35px_rgba(168,85,247,0.75)] transition duration-300 hover:scale-[1.03] hover:shadow-[0_0_55px_rgba(168,85,247,1)]"
-            >
-              Login
-            </button>
+         <div className="relative z-10 mt-6 flex items-center gap-4">
+  
+  <button
+    onClick={() => navigate("/login")}
+    className="px-8 py-3 rounded-full bg-chakra-gradient 
+    text-black font-semibold text-lg 
+    shadow-md 
+    transition duration-300 hover:scale-[1.02]"
+  >
+    Login
+  </button>
 
-            <button
-              onClick={() => navigate("/register")}
-              className="px-10 py-4 rounded-full border border-purple-300/35 bg-white/5 text-white text-2xl backdrop-blur-md hover:bg-white/10 transition"
-            >
-              Register
-            </button>
-          </div>
+  <button
+    onClick={() => navigate("/register")}
+    className="px-8 py-3 rounded-full border border-purple-300/30 
+    bg-white/5 text-white text-lg 
+    backdrop-blur-md 
+    hover:bg-white/10 transition"
+  >
+    Register
+  </button>
+
+</div>
 
           <p className="relative z-10 mt-8 text-base md:text-lg text-gray-400">
             Your energy has a pattern. SoulCode helps you see it.

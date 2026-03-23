@@ -32,10 +32,10 @@ export default function Register() {
       <div className="w-full max-w-md bg-white/5 border border-purple-400/30 rounded-3xl p-8 backdrop-blur-xl shadow-[0_0_40px_rgba(168,85,247,0.25)]">
         <div className="flex flex-col items-center mb-6">
           <img
-            src={logo}
-            alt="SoulCode"
-            className="w-20 opacity-90 drop-shadow-[0_0_18px_rgba(168,85,247,0.55)]"
-          />
+  src={logo}
+  alt="SoulCode"
+  className="w-32 opacity-90 drop-shadow-[0_0_18px_rgba(168,85,247,0.55)] transition-transform duration-300 hover:scale-105"
+/>
         </div>
 
         <h2 className="text-3xl font-semibold text-center mb-2">Create account</h2>
