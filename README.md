@@ -1,274 +1,117 @@
-# soulcode-web
+# 🌌 SoulCode
 
-🌌 SoulCode
+**Full-stack AI-inspired wellness platform**
 Where spirituality meets technology.
 
-A full-stack AI-inspired wellness platform designed to help users decode their inner energy patterns through structured tracking, data visualization, and secure authentication.
+---
 
-✨ Vision
+## 🚀 Overview
 
-SoulCode is more than a wellness tracker.
-It is a system for transforming subjective energy into structured, analyzable data.
+SoulCode is a full-stack application that transforms subjective wellness experiences into structured, analyzable data.
 
-The platform bridges:
+Users can track meditation and yoga sessions, visualize trends, and explore energy patterns through a chakra-based system.
 
-🧘 Spiritual awareness (chakras, reflection, presence)
+---
 
-📊 Data structure (tracked sessions, minutes, categories)
+## 🧠 Tech Stack
 
-🔐 Secure architecture (JWT authentication)
+**Backend**
 
-🚀 Production deployment (cloud-hosted fullstack application)
+* FastAPI
+* SQLAlchemy
+* PostgreSQL (Neon)
+* JWT Authentication (python-jose)
+* Password hashing (passlib / bcrypt)
 
-SoulCode demonstrates how emotional and spiritual experiences can be modeled through clean software architecture.
+**Frontend**
 
-🏗️ Architecture Overview
+* React (Vite)
+* React Router
+* TailwindCSS
+* Custom SVG data visualization
 
-User
-↓
-React Frontend (Vite)
-↓
-FastAPI Backend (Python)
-↓
-SQLAlchemy ORM
-↓
-PostgreSQL Database (Neon)
+**Deployment**
 
-The application automatically switches database based on environment variables.
+* Render (Web Service + Static Site)
+* Neon PostgreSQL
+* Environment-based configuration
 
-🔐 Authentication System
+---
 
-JWT-based authentication
+## 🔐 Authentication
 
-Secure password hashing (bcrypt via passlib)
+* JWT-based authentication
+* Secure password hashing
+* Protected API routes
+* Token-based authorization
 
-Protected API routes
+---
 
-Token stored client-side (localStorage)
+## 📊 Features
 
-CORS configured for production frontend domain
+* User registration & login
+* Create wellness entries (meditation / yoga)
+* Chakra-based categorization
+* Weekly summary analytics
+* Dynamic 7-day trend visualization
+* Production deployment (cloud)
 
-Auth Flow:
+---
 
-User registers → password hashed
+## 🏗️ Architecture
 
-User logs in → receives JWT access token
+React → FastAPI → SQLAlchemy → PostgreSQL
 
-Protected endpoints require Authorization: Bearer <token>
+---
 
-📊 Core Features
-✅ User Authentication
-
-Register
-
-Login
-
-Token validation
-
-/auth/me endpoint
-
-✅ Energy Tracking
-
-Create session entries
-
-Type (meditation / yoga)
-
-Minutes
-
-Chakra category
-
-Optional note
-
-✅ Weekly Summary Engine
-
-Aggregated total minutes
-
-Session count
-
-Dominant chakra detection
-
-✅ Trend Visualization
-
-Custom SVG 7-day energy graph
-
-Dynamic data rendering
-
-Chakra-inspired UI theme
-
-✅ Production Deployment
-
-Backend deployed on Render Web Service
-
-Frontend deployed as Static Site
-
-PostgreSQL cloud database (Neon)
-
-Environment-based configuration
-
-CORS hardened for production
-
-React Router rewrite rules configured
-
-🧠 Technical Stack
-Backend
-
-FastAPI
-
-SQLAlchemy (ORM)
-
-PostgreSQL (production)
-
-SQLite (local development)
-
-python-jose (JWT)
-
-passlib (bcrypt hashing)
-
-Uvicorn
-
-Frontend
-
-React (Vite)
-
-React Router
-
-Chakra-inspired UI design
-
-Custom animated landing page
-
-Custom SVG chart rendering
-
-Fetch-based API client with env-based base URL
-
-Deployment & DevOps
-
-Render (Web Service + Static Site)
-
-Environment Variables
-
-Production CORS configuration
-
-Case-sensitive production debugging
-
-Postgres driver management (psycopg2-binary)
-
-Git-based auto deployment workflow
-
-🌍 Live Application
+## 🌍 Live Demo
 
 Frontend:
-👉 https://soulcode-frontend-mahtab.onrender.com
+https://soulcode-frontend-mahtab.onrender.com
 
-Backend API Docs:
-👉 https://soulcode-api-mahtab.onrender.com/docs
+API Docs:
+https://soulcode-api-mahtab.onrender.com/docs
 
-⚙️ Local Development
+---
 
-1️⃣ Clone repository
-https://github.com/mahtabb90/soulcode-web.git
+## ⚙️ Local Setup
+
+```bash
+# Clone repo
+git clone https://github.com/mahtabb90/soulcode-web.git
 cd soulcode-web
 
-2️⃣ Backend setup
+# Backend
 cd backend
 python -m venv venv
-source venv/Scripts/activate  # Windows
+source venv/Scripts/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 
-Backend runs on:
-http://127.0.0.1:8000
-
-3️⃣ Frontend setup
-cd frontend
+# Frontend
+cd ../frontend
 npm install
 npm run dev
+```
 
-Frontend runs on:
-http://localhost:5173
+---
 
-🗄️ Database Strategy
+## 💡 Future Improvements
 
-The application uses environment-based configuration:
+* AI-generated insights (LLM)
+* CI/CD pipeline
+* Docker support
+* Role-based access
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./soulcode.db")
+---
 
-Local → SQLite
+## 👩‍💻 Author
 
-Production → PostgreSQL (Neo)
+**Mahtab Nezam**
+AI Developer (Python, AI, Fullstack)
 
-This allows seamless switching between development and production without modifying business logic.
+---
 
-🔄 Deployment Workflow
-
-Develop locally
-
-Test locally (SQLite)
-
-Push to GitHub
-
-Render auto-builds:
-
-Installs dependencies
-
-Connects to PostgreSQL (Neo)
-
-Runs uvicorn
-
-Application becomes live
-
-Frontend:
-
-Built with npm run build
-
-Deployed as static site
-
-Rewrite rule /* → /index.html for React Router
-
-
-💡 Design Philosophy
-
-SoulCode is intentionally built with:
-
-Clean separation of concerns
-
-Modular router structure
-
-ORM abstraction
-
-Environment-aware configuration
-
-Cloud-native deployment
-
-User-centered UI
-
-It demonstrates not only coding ability, but architectural thinking.
-
-
-🚀 Future Improvements
-
-AI-based weekly insights (LLM integration)
-
-Persistent disk monitoring
-
-Role-based user profiles
-
-API rate limiting
-
-CI/CD testing pipeline
-
-Dockerized deployment
-
-👩‍💻 Author
-
-Mahtab Nezam
-AI Developer Student
-Passionate about the intersection of technology, psychology, and inner systems.
-
-🧭 Final Note
-
-SoulCode represents a core belief:
+## ✨ Philosophy
 
 Technology can help humans understand themselves better.
-
-It is not only a tracking system.
-It is a structured reflection engine.
