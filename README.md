@@ -53,7 +53,7 @@ Users can track meditation and yoga sessions, visualize trends, and explore ener
 * Create wellness entries (meditation / yoga)
 * Chakra-based categorization
 * Weekly summary analytics
-* Dynamic 7-day trend visualization
+* Custom SVG-based 7-day trend visualization
 * Production deployment (cloud)
 
 ---
