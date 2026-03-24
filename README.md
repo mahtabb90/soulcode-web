@@ -24,17 +24,15 @@ SoulCode demonstrates how emotional and spiritual experiences can be modeled thr
 
 🏗️ Architecture Overview
 
-SoulCode is built as a production-ready fullstack application.
-
-Frontend (React + Vite)
-        ↓
-REST API (FastAPI)
-        ↓
-PostgreSQL (Render Cloud Database)
-Environments
-Environment	Backend	Database	Purpose
-Local	FastAPI (uvicorn)	SQLite	Development
-Production	FastAPI (Render Web Service)	PostgreSQL (Render DB)	Live deployment
+User
+↓
+React Frontend (Vite)
+↓
+FastAPI Backend (Python)
+↓
+SQLAlchemy ORM
+↓
+PostgreSQL Database (Neon)
 
 The application automatically switches database based on environment variables.
 
@@ -103,7 +101,7 @@ Backend deployed on Render Web Service
 
 Frontend deployed as Static Site
 
-PostgreSQL cloud database
+PostgreSQL cloud database (Neon)
 
 Environment-based configuration
 
@@ -165,9 +163,11 @@ Backend API Docs:
 👉 https://soulcode-api-mahtab.onrender.com/docs
 
 ⚙️ Local Development
+
 1️⃣ Clone repository
-git clone https://github.com/mahtabb90/soulcode-web.git
+https://github.com/mahtabb90/soulcode-web.git
 cd soulcode-web
+
 2️⃣ Backend setup
 cd backend
 python -m venv venv
@@ -176,16 +176,16 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 
 Backend runs on:
-
 http://127.0.0.1:8000
+
 3️⃣ Frontend setup
 cd frontend
 npm install
 npm run dev
 
 Frontend runs on:
-
 http://localhost:5173
+
 🗄️ Database Strategy
 
 The application uses environment-based configuration:
@@ -194,7 +194,7 @@ DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./soulcode.db")
 
 Local → SQLite
 
-Production → PostgreSQL (Render Internal URL)
+Production → PostgreSQL (Neo)
 
 This allows seamless switching between development and production without modifying business logic.
 
@@ -210,7 +210,7 @@ Render auto-builds:
 
 Installs dependencies
 
-Connects to PostgreSQL
+Connects to PostgreSQL (Neo)
 
 Runs uvicorn
 
@@ -223,6 +223,7 @@ Built with npm run build
 Deployed as static site
 
 Rewrite rule /* → /index.html for React Router
+
 
 💡 Design Philosophy
 
@@ -241,6 +242,7 @@ Cloud-native deployment
 User-centered UI
 
 It demonstrates not only coding ability, but architectural thinking.
+
 
 🚀 Future Improvements
 
