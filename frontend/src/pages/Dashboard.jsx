@@ -16,11 +16,11 @@ const chakraStyles = {
   solar: "border-chakra-solar/40 shadow-[0_0_25px_rgba(234,179,8,0.25)]",
   heart: "border-chakra-heart/40 shadow-[0_0_25px_rgba(34,197,94,0.25)]",
   throat: "border-chakra-throat/40 shadow-[0_0_25px_rgba(59,130,246,0.25)]",
-  third: "border-chakra-third/40 shadow-[0_0_25px_rgba(99,102,241,0.25)]",
+  thirdEye: "border-chakra-third/40 shadow-[0_0_25px_rgba(99,102,241,0.25)]",
   crown: "border-chakra-crown/40 shadow-[0_0_25px_rgba(168,85,247,0.25)]",
 };
 
-const chakras = ["root", "sacral", "solar", "heart", "throat", "third", "crown"];
+const chakras = ["root", "sacral", "solar", "heart", "throat", "thirdEye", "crown"];
 
 function startOfDayLocal(d) {
   const x = new Date(d);
