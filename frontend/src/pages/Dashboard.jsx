@@ -16,11 +16,19 @@ const chakraStyles = {
   solar: "border-chakra-solar/40 shadow-[0_0_25px_rgba(234,179,8,0.25)]",
   heart: "border-chakra-heart/40 shadow-[0_0_25px_rgba(34,197,94,0.25)]",
   throat: "border-chakra-throat/40 shadow-[0_0_25px_rgba(59,130,246,0.25)]",
-  thirdEye: "border-chakra-third/40 shadow-[0_0_25px_rgba(99,102,241,0.25)]",
+  third: "border-chakra-third/40 shadow-[0_0_25px_rgba(99,102,241,0.25)]",
   crown: "border-chakra-crown/40 shadow-[0_0_25px_rgba(168,85,247,0.25)]",
 };
 
-const chakras = ["root", "sacral", "solar", "heart", "throat", "thirdEye", "crown"];
+const chakras = [
+  { label: "Root", value: "root" },
+  { label: "Sacral", value: "sacral" },
+  { label: "Solar", value: "solar" },
+  { label: "Heart", value: "heart" },
+  { label: "Throat", value: "throat" },
+  { label: "Third Eye", value: "third" },
+  { label: "Crown", value: "crown" },
+];
 
 function startOfDayLocal(d) {
   const x = new Date(d);
@@ -197,7 +205,7 @@ function generateInsight(summary) {
     solar: "Confidence and personal power expanded. Choose one brave action daily.",
     heart: "Heart energy was strongest—connection, compassion and emotional balance.",
     throat: "Expression was highlighted. Speak your truth with softness and clarity.",
-    third: "Intuition and insight were active. Trust the signals, write them down.",
+    thirdEye: "Intuition and insight were active. Trust the signals, write them down.",
     crown: "Spiritual connection was emphasized. Make space for silence and surrender.",
   };
 
@@ -438,25 +446,26 @@ function handleEdit(entry) {
               </div>
 
               <div>
-                <label className="text-sm text-gray-300">Chakra</label>
-                <div className="mt-3 grid grid-cols-4 gap-3">
-                  {chakras.map((c) => (
-                    <button
-                      key={c}
-                      type="button"
-                      onClick={() => setChakra(c)}
-                      className={`rounded-2xl px-3 py-3 border bg-white/5 hover:bg-white/10 transition ${
-                        chakra === c
-                          ? `${chakraStyles[c]} scale-[1.02]`
-                          : "border-white/10"
-                      }`}
-                      title={c}
-                    >
-                      <div className="text-xs text-gray-300 capitalize">{c}</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
+  <label className="text-sm text-gray-300">Chakra</label>
+  
+  <div className="mt-3 grid grid-cols-4 gap-3">
+    {chakras.map((c) => (
+      <button
+        key={c.value}
+        type="button"
+        onClick={() => setChakra(c.value)}
+        className={`rounded-2xl px-3 py-3 border bg-white/5 hover:bg-white/10 transition ${
+          chakra === c.value
+            ? `${chakraStyles[c.value]} scale-[1.02]`
+            : "border-white/10"
+        }`}
+        title={c.label}
+      >
+        <div className="text-xs text-gray-300">{c.label}</div>
+      </button>
+    ))}
+  </div>
+</div>
 
               <div>
                 <label className="text-sm text-gray-300">Note (optional)</label>
