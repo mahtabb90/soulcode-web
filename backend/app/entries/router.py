@@ -5,8 +5,23 @@ from app.db.database import get_db
 from app.db.models import Entry
 from app.entries.schemas import EntryCreate, EntryOut, CHAKRAS, TYPES
 from app.auth.router import get_current_user_email  # we reuse JWT dependency
+from app.ai.service import generate_weekly_insight
+
 
 router = APIRouter(prefix="/entries", tags=["entries"])
+
+@router.get("/ai/weekly-insight")
+def get_ai_weekly_insight(
+    db: Session = Depends(get_db),
+    email: str = Depends(get_current_user_email),
+):
+    summary = weekly_summary(db=db, user_email=email)
+    insight = generate_weekly_insight(summary)
+
+    return {
+        "insight": insight,
+        "summary": summary
+    }
 
 
 @router.post("", response_model=EntryOut, status_code=201)
